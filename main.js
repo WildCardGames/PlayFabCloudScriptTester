@@ -31,13 +31,97 @@ var log = {
     }
 }
 
-// Server method swizzling - CloudScript methods are synchronous
+// Server method swizzling - CloudScript methods are synchronous, and won't work unless they are in this list
 var methodsToConvert = [
-    "GetUserData",
-    "UpdateUserData",
-
+    "AddCharacterVirtualCurrency",
+    "AddSharedGroupMembers",
+    "AddUserVirtualCurrency",
+    "AuthenticateSessionTicket",
+    "AwardSteamAchievement",
+    "ConsumeItem",
+    "CreateSharedGroup",
+    "DeleteCharacterFromUser",
+    "DeleteSharedGroup",
+    "DeleteUsers",
+    "EvaluateRandomResultTable",
+    "ExecuteCloudScript",
+    "GetAllSegments",
+    "GetAllUsersCharacters",
+    "GetCatalogItems",
+    "GetCharacterData",
+    "GetCharacterInternalData",
+    "GetCharacterInventory",
+    "GetCharacterLeaderboard",
+    "GetCharacterReadOnlyData",
+    "GetCharacterStatistics",
+    "GetContentDownloadUrl",
+    "GetLeaderboard",
+    "GetLeaderboardAroundCharacter",
+    "GetLeaderboardAroundUser",
+    "GetLeaderboardForUserCharacters",
+    "GetPlayFabIDsFromFacebookIDs",
+    "GetPlayFabIDsFromSteamIDs",
+    "GetPlayerCombinedInfo",
+    "GetPlayerSegments",
+    "GetPlayerStatisticVersions",
     "GetPlayerStatistics",
-    "UpdatePlayerStatistics"
+    "GetPlayersInSegment",
+    "GetPublisherData",
+    "GetSharedGroupData",
+    "GetTitleData",
+    "GetTitleInternalData",
+    "GetTitleNews",
+    "GetUserAccountInfo",
+    "GetUserData",
+    "GetUserInternalData",
+    "GetUserInventory",
+    "GetUserPublisherData",
+    "GetUserPublisherInternalData",
+    "GetUserPublisherReadOnlyData",
+    "GetUserReadOnlyData",
+    "GetUserStatistics",
+    "GrantCharacterToUser",
+    "GrantItemsToCharacter",
+    "GrantItemsToUser",
+    "GrantItemsToUsers",
+    "LogEvent",
+    "ModifyItemUses",
+    "MoveItemToCharacterFromCharacter",
+    "MoveItemToCharacterFromUser",
+    "MoveItemToUserFromCharacter",
+    "NotifyMatchmakerPlayerLeft",
+    "RedeemCoupon",
+    "RedeemMatchmakerTicket",
+    "RemoveSharedGroupMembers",
+    "ReportPlayer",
+    "RevokeInventoryItem",
+    "SendPushNotification",
+    "SetGameServerInstanceData",
+    "SetGameServerInstanceState",
+    "SetPublisherData",
+    "SetTitleData",
+    "SetTitleInternalData",
+    "SubtractCharacterVirtualCurrency",
+    "SubtractUserVirtualCurrency",
+    "UnlockContainerInstance",
+    "UnlockContainerItem",
+    "UpdateCharacterData",
+    "UpdateCharacterInternalData",
+    "UpdateCharacterReadOnlyData",
+    "UpdateCharacterStatistics",
+    "UpdatePlayerStatistics",
+    "UpdateSharedGroupData",
+    "UpdateUserData",
+    "UpdateUserInternalData",
+    "UpdateUserInventoryItemCustomData",
+    "UpdateUserPublisherData",
+    "UpdateUserPublisherInternalData",
+    "UpdateUserPublisherReadOnlyData",
+    "UpdateUserReadOnlyData",
+    "UpdateUserStatistics",
+    "WriteCharacterEvent",
+    "WritePlayerEvent",
+    "WriteTitleEvent"
 ];
 
 for( var i = 0; i < methodsToConvert.length; i++ )
@@ -83,7 +167,7 @@ var handlers = {};
 include('./cloudscript.js')
 
 //
-// Start of testing section. Invoke your handlers here
+// Load the tests
 //
 
 include('./tests.js')
