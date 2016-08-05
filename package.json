@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "deasync": "^0.1.7",
-    "playfab-sdk": "^0.26.160801"
+    "fs": "0.0.2",
+    "playfab-sdk": "^0.26.160801",
+    "vm": "^0.1.0"
   }
 }
