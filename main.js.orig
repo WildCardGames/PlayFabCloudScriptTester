@@ -112,6 +112,12 @@ var methodsToConvert = [
     "UpdatePlayerStatistics",
     "UpdateSharedGroupData",
     "UpdateUserData",
+<<<<<<< HEAD
+
+    "GetPlayerStatistics",
+    "UpdatePlayerStatistics",
+    "GetPlayersInSegment"
+=======
     "UpdateUserInternalData",
     "UpdateUserInventoryItemCustomData",
     "UpdateUserPublisherData",
@@ -122,6 +128,7 @@ var methodsToConvert = [
     "WriteCharacterEvent",
     "WritePlayerEvent",
     "WriteTitleEvent"
+>>>>>>> origin/master
 ];
 
 for( var i = 0; i < methodsToConvert.length; i++ )
