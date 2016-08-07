@@ -37,7 +37,8 @@ var methodsToConvert = [
     "UpdateUserData",
 
     "GetPlayerStatistics",
-    "UpdatePlayerStatistics"
+    "UpdatePlayerStatistics",
+    "GetPlayersInSegment"
 ];
 
 for( var i = 0; i < methodsToConvert.length; i++ )
@@ -59,12 +60,19 @@ for( var i = 0; i < methodsToConvert.length; i++ )
                 done = true;
                 value = result;
                 
-                if ( error ) log.error(error);
+                if ( error ) {
+                    log.error(name + ":");
+                    log.error(error);
+                }
             });
 
             while(!done) deasync.runLoopOnce();
 
-            return value.data;
+            if ( value ) {
+                return value.data;
+            } else {
+                return null;
+            }
         }
     })();
 }
