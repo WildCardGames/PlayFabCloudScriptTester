@@ -24,7 +24,7 @@ var log = {
         console.log(msg);
     },
     error: function(msg) {
-        console.error(msg);
+        console.error('\x1b[31m' + msg + '\x1b[0m');
     },
     json: function(o) {
         log.info(JSON.stringify(o));
