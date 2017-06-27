@@ -1,5 +1,3 @@
-'use strict';
-
 // Testing Ultimate Cribbage
 
 // Configuration
@@ -12,9 +10,10 @@ var currentPlayerId = process.env.PF_PLAYER_ID;
 // Setup
 var fs = require('fs');
 var vm = require('vm');
+var sleep = require('sleep');
 
 var deasync = require('deasync');
-var server = require("playfab-sdk/PlayFabServer.js");
+var server = require("playfab-sdk/Scripts/PlayFab/PlayFabServer.js");
 
 server.settings.titleId = titleId;
 server.settings.developerSecretKey = secretKey;
@@ -24,16 +23,28 @@ var log = {
         console.log(msg);
     },
     error: function(msg) {
-        console.error('\x1b[31m' + msg + '\x1b[0m');
+        console.error(msg);
     },
     json: function(o) {
         log.info(JSON.stringify(o));
     }
 }
 
+if(!titleId || !secretKey || !currentPlayerId)
+{
+    log.error("Missing PF_TITLE_ID, PF_SECRET_KEY, or PF_PLAYER_ID");
+    
+    process.exit(1);
+}
+
+var script = {
+    titleId: titleId
+};
+
 // Server method swizzling - CloudScript methods are synchronous, and won't work unless they are in this list
 var methodsToConvert = [
     "AddCharacterVirtualCurrency",
+    "AddPlayerTag",
     "AddSharedGroupMembers",
     "AddUserVirtualCurrency",
     "AuthenticateSessionTicket",
@@ -66,6 +77,7 @@ var methodsToConvert = [
     "GetPlayerStatisticVersions",
     "GetPlayerStatistics",
     "GetPlayersInSegment",
+    "GetPlayerTags",
     "GetPublisherData",
     "GetSharedGroupData",
     "GetTitleData",
